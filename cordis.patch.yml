@@ -1,0 +1,18 @@
+# dsh-chat-sync bundle patch: register the chat-sync plugin row.
+#
+# 将本地 Claude Code / Codex CLI / Cursor Agent 的对话自动导入为 DSH 会话。
+# 安装后如需调整配置，在 profile 的 cordis.patch.yml 中按 id 覆盖：
+#
+#   - id: chat-sync
+#     config:
+#       enabled: true
+#       watch: true            # 动态同步（文件监听 + SSE 推送）
+#       syncToWorkspace: true  # 文件复制到 .chat-sync 目录
+#       autoImport: true       # 自动导入为 DSH 会话
+#       autoImportIntervalMs: 60000  # 扫描间隔
+
+- insert:
+    - id: chat-sync
+      name: 'dsh-chat-sync'
+      config:
+        enabled: true
